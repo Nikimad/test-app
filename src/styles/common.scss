@@ -1,0 +1,19 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+form {
+    display: grid;
+    place-content: center;
+    gap: 0.5rem;
+}
+
+input,
+select,
+button {
+    display: block;
+    padding: 0.5rem;
+    margin-block: 0.5rem;
+}
