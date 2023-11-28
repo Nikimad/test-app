@@ -1,3 +1,5 @@
+import "styles/common.scss";
+
 export const metadata = {
   title: "test-app",
 };
