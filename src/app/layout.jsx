@@ -6,7 +6,10 @@ export const metadata = {
 
 const RootLayout = ({ children }) => (
   <html lang="en">
-    <body>{children}</body>
+    <body>
+      {children}
+      <div id="modal-root"></div>
+    </body>
   </html>
 );
 
