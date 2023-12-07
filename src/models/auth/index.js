@@ -5,6 +5,7 @@ const authSlice = createSlice({
   initialState: {
     is_authorized: false,
     is_admin: false,
+    errors: null,
   },
   reducers: {
     signup(state) {
@@ -31,6 +32,9 @@ const authSlice = createSlice({
     getUserSuccess(state) {
       return state;
     },
+    setErrors(state, { payload }) {
+      state.errors = payload;
+    }
   },
 });
 

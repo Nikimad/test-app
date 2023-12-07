@@ -7,16 +7,17 @@ function* signup({ payload }) {
     yield call(authApi.signup, payload);
     yield put(authActions.loginSuccess({ is_admin: payload.is_admin }));
   } catch (e) {
-    yield console.log(e);
+    yield put(authActions.setErrors(e));
   }
 }
 
 function* signin({ payload }) {
   try {
     const user = yield call(authApi.signin, payload);
+    yield console.log(user)
     yield put(authActions.signinSuccess(user));
   } catch (e) {
-    yield console.log(e);
+    yield put(authActions.setErrors(e));
   }
 }
 
