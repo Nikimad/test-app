@@ -13,4 +13,5 @@ export const authSelectors = {
       is_admin,
     })
   ),
+  selectErrors: createSelector(rootSelector, ({ errors }) => errors),
 };
