@@ -1,45 +1,27 @@
 "use client";
 
 import useAction from "@/hooks/useAction";
-import useForm from "@/hooks/useForm";
 import { authActions } from "@/models/auth";
+import { Formik } from "formik";
+import AuthForm from "@/components/AuthForm";
 
 const SigninPage = () => {
-  const [data, handlers] = useForm({
-    username: "",
-    password: "",
-  });
-
   const signin = useAction(authActions.signin);
 
-  const handleSubmit = (e) => {
-    handlers.onSubmit(e);
-    signin(data);
+  const handleSubmit = (values, { setSubmitting, setFieldTouched }) => {
+    setSubmitting(false);
+    setFieldTouched("error");
+    signin(values);
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Sign in</h2>
-      <label>
-        Username
-        <input
-          type="text"
-          name="username"
-          value={data.username}
-          onChange={handlers.onChange}
-        />
-      </label>
-      <label>
-        Password
-        <input
-          type="text"
-          name="password"
-          value={data.password}
-          onChange={handlers.onChange}
-        />
-      </label>
-      <button type="submit">Sign in</button>
-    </form>
+    <Formik
+      initialValues={{ username: "", password: "" }}
+      validateOnBlur={false}
+      validateOnChange={false}
+      onSubmit={handleSubmit}
+      component={AuthForm}
+    />
   );
 };
 
