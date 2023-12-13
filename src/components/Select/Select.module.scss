@@ -1,0 +1,42 @@
+@use "styles/variables.scss" as *;
+
+.select {
+  &__container {
+    position: relative;
+  }
+
+  &__combobox {
+    cursor: pointer;
+
+    &:focus {
+      outline: auto;
+    }
+  }
+
+  &__listbox {
+    border-radius: 0 0 12px 12px;
+    position: absolute;
+    z-index: 1;
+    bottom: 1px;
+    width: 100%;
+    transform: translateY(100%);
+    overflow-x: hidden;
+    padding: 0;
+    margin: 0;
+
+    &[aria-hidden="true"] {
+      display: none;
+    }
+  }
+
+  &__option {
+    display: block;
+    cursor: pointer;
+    background-color: $white;
+    padding: 1rem;
+
+    &_active {
+        background-color: $shadow;
+    }
+  }
+}
