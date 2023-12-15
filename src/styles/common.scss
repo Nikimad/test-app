@@ -29,6 +29,8 @@ form {
 }
 
 .input {
+  display: block;
+  width: 100%;
   border: 1px solid $shadow;
   border-radius: 12px;
   background-color: $white;
