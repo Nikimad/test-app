@@ -1,0 +1,33 @@
+@use "./variables.scss" as *;
+
+.form {
+    display: grid;
+    gap: 0.5rem;
+    background-color: $white;
+    border-radius: 12px;
+}
+
+.input {
+    display: block;
+    width: 100%;
+    border: 1px solid $shadow;
+    border-radius: 12px;
+    background-color: $white;
+    padding: 1rem;
+    margin-block: 0.5rem;
+}
+
+.submit {
+    font-weight: 600;
+    color: $white;
+    background-color: $accent;
+    border: 1px solid $shadow;
+    border-radius: 12px;
+    cursor: pointer;
+    padding: 1rem;
+
+    &:hover,
+    &:focus {
+        background-color: $accent-light;
+    }
+}
