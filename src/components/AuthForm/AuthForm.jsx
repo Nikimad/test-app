@@ -1,29 +1,33 @@
+import cn from "classnames";
 import { Form, Field, ErrorMessage } from "formik";
+import s from "./AuthForm.module.scss";
 
 const AuthForm = ({ initialValues }) => (
-  <Form>
+  <Form className={s.authform}>
     <h2>{"password_confirmation" in initialValues ? "Sign up" : "Sign in"}</h2>
-    <label>
-      Username
-      <Field name="username" />
-      <ErrorMessage name="username" component="span" />
-    </label>
-    <label>
-      Password
-      <Field name="password" />
-      <ErrorMessage name="password" component="span" />
-    </label>
-    {"password_confirmation" in initialValues ? (
+    <div className={s.authform__fields}>
       <label>
-        Password confirmation
-        <Field name="password_confirmation" />
-        <ErrorMessage name="password_confirmation" component="span" />
+        Username
+        <Field name="username" className={s.authform__field} />
+        <ErrorMessage name="username" component="span" className={s.authform__error} />
       </label>
-    ) : null}
-    <button type="submit">
+      <label>
+        Password
+        <Field name="password" className={s.authform__field} />
+        <ErrorMessage name="password" component="span" className={s.authform__error} />
+      </label>
+      {"password_confirmation" in initialValues ? (
+        <label>
+          Password confirmation
+          <Field name="password_confirmation" className={s.authform__field} />
+          <ErrorMessage name="password_confirmation" component="span" className={s.authform__error} />
+        </label>
+      ) : null}
+    </div>
+    <button type="submit" className={s.authform__submit}>
       {"password_confirmation" in initialValues ? "Sign up" : "Sign in"}
     </button>
-    <ErrorMessage name="error" component="span" />
+    <ErrorMessage name="error" component="span" className={cn(s.authform__error, s.authform__error_container)} />
   </Form>
 );
 
