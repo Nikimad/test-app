@@ -1,0 +1,35 @@
+@use "styles/variables.scss" as *;
+@use "styles/utilities.scss" as *;
+
+.authform {
+    @extend .form;
+    padding: 1rem 2rem;
+
+    &__fields {
+        @extend .form;
+        margin-bottom: 1.5rem;
+    }
+
+    &__field {
+        @extend .input;
+    }
+
+    &__error {
+        display: block;
+        color: $alert;
+
+        &::first-letter {
+            text-transform: capitalize;
+        }
+
+        &_container {
+            border: 1px solid $alert;
+            border-radius: 12px;
+            padding: 1rem;
+        }
+    }
+
+    &__submit {
+        @extend .submit;
+    }
+}
