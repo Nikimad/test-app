@@ -1,13 +1,43 @@
-.modal__overlay {
-    position: fixed;
-    inset: 0;
-    display: grid;
-    place-content: center;
-    background-color: rgba(0, 0, 0, 0.5);
-    height: 100%;
-}
+@use "styles/variables.scss" as *;
+@use "styles/utilities.scss" as *;
 
-.modal__content {
-    background-color: rgba(255, 255, 255, 1);
-    padding: 8px;
+.modal {
+    &__overlay {
+        position: fixed;
+        inset: 0;
+        display: grid;
+        place-content: center;
+        background-color: rgba(0, 0, 0, 0.5);
+        height: 100%;
+    }
+    
+    &__content {
+        background-color: rgba(255, 255, 255, 1);
+        padding: 8px;
+    }
+
+    &__header {
+        display: grid;
+    }
+
+    &__button {
+        border-radius: 100%;
+        border: none;
+        cursor: pointer;
+        margin-left: auto;
+
+        &__text {
+            @extend .visually-hidden;
+        }
+
+        &:hover,
+        &:focus {
+            background-color: $shadow;
+        }
+    }
+
+    &__title {
+        border-bottom: 1px solid $shadow;
+        padding-bottom: 0.4em;
+    }
 }

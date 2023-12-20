@@ -1,10 +1,9 @@
 import { useRef, useCallback, useEffect } from "react";
 import { createPortal } from "react-dom";
+import useFocusTrap from "@/hooks/useFocusTrap";
 import Modal from "./Modal";
 
-import useFocusTrap from "@/hooks/useFocusTrap";
-
-const ModalContainer = ({ onClose, children }) => {
+const ModalContainer = ({ title, onClose, children }) => {
   const overlay = useRef(null);
   const modal = useRef(null);
 
@@ -35,6 +34,7 @@ const ModalContainer = ({ onClose, children }) => {
       modal={modal}
       onClose={onClose}
       onDismiss={onClick}
+      title={title}
       children={children}
     />,
     document.getElementById("modal-root")
