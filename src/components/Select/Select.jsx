@@ -2,6 +2,7 @@ import cn from "classnames";
 import s from "./Select.module.scss";
 
 const Select = ({
+  readOnly,
   disabled,
   comboboxRef,
   label,
@@ -26,21 +27,22 @@ const Select = ({
       <div
         ref={comboboxRef}
         name={name}
-        onClick={disabled ? () => {} : onComboboxClick}
-        onKeyDown={disabled ? () => {} : onKeyDown}
+        onClick={disabled || readOnly ? () => {} : onComboboxClick}
+        onKeyDown={disabled || readOnly ? () => {} : onKeyDown}
         role="combobox"
         aria-labelledby={`${name}-label`}
         aria-controls={name}
-        aria-expanded={disabled ? false : isExpanded}
+        aria-expanded={disabled || readOnly ? false : isExpanded}
         aria-activedescendant={value}
         aria-disabled={disabled}
+        aria-readonly={readOnly}
         tabIndex={disabled ? undefined : "0"}
         className={cn("input", s.select__combobox)}
-        onBlur={disabled ? () => {} : onBlur}
+        onBlur={disabled || readOnly ? () => {} : onBlur}
       >
         {options.find((option) => option.value === value).label}
       </div>
-      {disabled ? null : (
+      {disabled || readOnly ? null : (
         <ul
           role="listbox"
           id={name}

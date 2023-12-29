@@ -4,6 +4,7 @@ import Select from "./Select";
 import { useField } from "formik";
 
 const SelectContainer = ({
+  readOnly,
   disabled,
   name,
   options,
@@ -48,13 +49,13 @@ const SelectContainer = ({
 
   const handleInput = debounce((input) => {
     if (input !== inputRef.current.lastInput) {
-      inputRef.current.filtredOptions = optionsValues.filter((option) =>
-        option.startsWith(input)
+      inputRef.current.filtredOptions = options.filter((option) =>
+        option.label.toLowerCase().startsWith(input)
       );
       inputRef.current.lastInput = input;
     }
 
-    const nextLastIndex = inputRef.current.filtredOptions.indexOf(value) + 1;
+    const nextLastIndex = inputRef.current.filtredOptions.findIndex((option) => option.value === value) + 1;
 
     inputRef.current.lastIndex =
       nextLastIndex >= inputRef.current.filtredOptions.length
@@ -64,7 +65,7 @@ const SelectContainer = ({
     if (inputRef.current.filtredOptions.length !== 0) {
       handleChange(
         optionsValues.indexOf(
-          inputRef.current.filtredOptions[inputRef.current.lastIndex]
+          inputRef.current.filtredOptions[inputRef.current.lastIndex].value
         )
       );
     }
@@ -159,6 +160,7 @@ const SelectContainer = ({
   }, [handleDissmiss]);
 
   return <Select
+      readOnly={readOnly}
       disabled={disabled}
       comboboxRef={comboboxRef}
       options={options}
